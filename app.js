@@ -3,7 +3,9 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 
-const db = require('./config/database')
+//const db = require('./config/database')
+//global.db = db;
+var db = require('./models');
 global.db = db;
 
 const homeRoutes = require('./routes/index');
@@ -26,5 +28,6 @@ app.use(playerRoutes);
 
 // set the app to listen on the port
 app.listen(port, () => {
+    //db.sequelize.sync();
     console.log(`Server running on port: ${port}`);
 });
